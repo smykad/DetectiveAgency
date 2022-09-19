@@ -37,6 +37,19 @@ namespace DetectiveAgency.Controllers
             ViewBag.Salary = 0;
             return View();
         }
+        [HttpPost]
+        public IActionResult CalcPay(Employee model)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.Salary = model.CalcSalary();
+            }
+            else
+            {
+                ViewBag.Salary = 0;
+            }
+            return View(model);
+        }
         public IActionResult mainOfficeEmployees()
         {
             return View();

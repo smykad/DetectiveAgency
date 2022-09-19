@@ -1,8 +1,39 @@
-﻿@{
+﻿@model Employee
+@{
     ViewData["Title"] = "New Employee Form";
 }
 
-<h2>New Employee Form</h2>
-<p>Not ready for prime time yet...</p>
+<div class="row">
+    <h1 class="col-md-12">New Employee Form</h1>
+    <form asp-action="CalcPay" method="post" class="col-md-6">
+        <div>
+            <label asp-for="Id">Id:</label>
+            <input asp-for="Id" />
+            <span asp-validation-for="Id" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Name">Name:</label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Hours">Hours:</label>
+            <input asp-for="Hours" />
+            <span asp-validation-for="Hours" class="text-danger"></span>
+        </div>
+        <div>
+            <label asp-for="Rate">Rate:</label>
+            <input asp-for="Rate" />
+            <span asp-validation-for="Rate" class="text-danger"></span>
+        </div>
+        <div>
+            <label>Weekly Gross Pay:</label>
+            <input value="@ViewBag.Salary.ToString("C2")" readonly>
+        </div>
+        <button type="submit">Calculate Gross Pay</button>
+        <button asp-controller="Home" asp-action="Index">Clear</button>
+        
+    </form>
+</div>
 
 
